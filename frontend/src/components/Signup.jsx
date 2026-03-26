@@ -77,15 +77,15 @@ const Signup = () => {
                     </div>
                     <div className='flex items-center my-4'>
                         <div className='flex items-center'>
-                            <p>Male</p>
+                            <p className='text-black'>Male</p>
                             <input checked={user.gender === "male"} onChange={() => handleCheckbox("male")} type="checkbox" className="checkbox checkbox-neutral mx-2" />
                         </div>
                         <div className='flex items-center'>
-                            <p>Female</p>
+                            <p className='text-black'>Female</p>
                             <input checked={user.gender === "female"} onChange={() => handleCheckbox("female")} type="checkbox" className="checkbox checkbox-neutral mx-2" />
                         </div>
                     </div>
-                    <p className='text-center my-2'>Already have an account? <Link to="/login">Login</Link></p>
+                    <p className='text-center my-2 text-black'>Already have an account? <Link to="/login">Login</Link></p>
                     <div >
                         <button type='submit' className='btn btn-block btn-md mt-2 text-black text-lg bg-white border-slate-700 '>Signup</button>
                     </div>

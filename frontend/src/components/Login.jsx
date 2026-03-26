@@ -55,7 +55,7 @@ const Login = () => {
             <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} className='w-full input input-bordered h-10 text-black bg-white' type="password" placeholder='Password' />
           </div>
 
-          <p className='text-center my-2'>Don't have an account? <Link to="/register">Signup</Link></p>
+          <p className='text-center my-2 text-white'>Don't have an account? <Link to="/register">Signup</Link></p>
           <div >
             <button type='submit' className='btn btn-block btn-md mt-2 text-black text-lg bg-white border-slate-700 '>Login</button>
           </div>
