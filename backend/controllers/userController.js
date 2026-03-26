@@ -27,7 +27,7 @@ export const register = async(req, res)=>{
         })
         return res.status(201).json({
             message: "Account created sucessfully",
-            sucess: true
+            success: true
         })
 
     } catch(error){
@@ -45,14 +45,14 @@ export const login = async(req, res)=>{
         if(!user){
             return res.status(400).json({
                 message:"Incorrect username or password", 
-                sucess:true
+                success:true
             })
         }
         const isPasswordMatch = await bcrypt.compare(password, user.password)
         if(!isPasswordMatch){
             return res.status(400).json({
                 message:"Incorrect username or password", 
-                sucess:true
+                success:true
             })
         }
         const tokenData = {
