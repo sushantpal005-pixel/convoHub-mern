@@ -5,24 +5,25 @@ import axios from 'axios';
 import toast from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
-import { setOtherUsers, setSearchedUser } from '../redux/userSlice';
+import { setAuthUser, setOtherUsers, setSearchedUser } from '../redux/userSlice';
 
 const Sidebar = () => {
   const [search, setSearch] = useState("")
-  const { otherUsers } = useSelector(store => store.user)
+  const { otherUsers, authUser } = useSelector(store => store.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(() => {
-      if (!search.trim()) {
-        dispatch(setSearchedUser(null));
-      }
-    }, [search]);
+    if (!search.trim()) {
+      dispatch(setSearchedUser(null));
+    }
+  }, [search]);
   const logoutHandler = async () => {
 
     try {
       const res = await axios.get('http://localhost:8080/api/v1/user/logout')
       navigate("/login")
       toast.success(res.data.message)
+      dispatch(setAuthUser(null))
     } catch (error) {
       console.log(error)
     }
@@ -48,7 +49,19 @@ const Sidebar = () => {
       <div className='divider px-3'></div>
       <OtherUsers />
       <div>
-        <button onClick={logoutHandler} className='btn btn-sm bg-cyan-600 hover:bg-cyan-500 text-black'>Logout</button>
+        <div className='flex gap-2 items-center bg-white/20 rounded p-2 cursor-pointer'>
+          <div className='avatar relative'>
+            <div className='w-12 rounded-full '>
+              <img className='' src={authUser?.profilePhoto} alt="userprofile" />
+            </div>
+          </div>
+          <div className='flex flex-col flex-1'>
+            <div className='flex justify-between gap-2 '>
+              <p className='text-white/90'>{authUser?.fullname}</p>
+            </div>
+          </div>
+          <button onClick={logoutHandler} className='btn btn-sm bg-cyan-600 hover:bg-cyan-500 text-black'>Logout</button>
+        </div>
       </div>
     </div>
   )

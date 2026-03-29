@@ -7,7 +7,7 @@ import { setSelectedUser } from '../redux/userSlice'
 
 const MessageContainer = () => {
     const { selectedUser } = useSelector(store => store.user)
-    const {authUser} = useSelector(store => store.user)
+    const { authUser } = useSelector(store => store.user)
     const dispatch = useDispatch()
     useEffect(() => {
         return () => dispatch(setSelectedUser(null))
@@ -22,7 +22,8 @@ const MessageContainer = () => {
                             <div className='avatar'>
                                 <div className='w-10 rounded-full '>
                                     <img className='relative' src={selectedUser?.profilePhoto} alt="userprofile" />
-                                    <span className="absolute top-1 right-0 w-2 h-2 bg-green-500 border-2 border-white rounded-full"></span>
+                                    {/* <span className="absolute top-1 right-0 w-2 h-2 bg-green-500 border-2 border-white rounded-full"></span> */}
+                                    
                                 </div>
                             </div>
                             <div className='flex flex-col flex-1'>
@@ -36,10 +37,10 @@ const MessageContainer = () => {
                         </div>
                         <SendInput />
                     </div>) : (
-                        <div className='md:min-w-[550px] flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl text-white font-bold'>Hi, {authUser?.fullname}</h1>
-                            <h1 className='text-2xl text-white'>Let's start conversation</h1>
-                        </div>
+                    <div className='md:min-w-[550px] flex flex-col justify-center items-center'>
+                        <h1 className='text-4xl text-white font-bold'>Hi, {authUser?.fullname}</h1>
+                        <h1 className='text-2xl text-white'>Let's start conversation</h1>
+                    </div>
                 )
             }
         </>

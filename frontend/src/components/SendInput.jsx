@@ -8,12 +8,14 @@ import { setMessages } from '../redux/messageSlice'
 const SendInput = () => {
     const [message, setMessage] = useState("")
     const dispatch = useDispatch()
-    const {selectedUser} = useSelector(store=>store.user)
+    const {selectedUser, authUser} = useSelector(store=>store.user)
     const {messages} = useSelector(store=>store.message)
 
     const onSubmitHandler = async (e) => {
         e.preventDefault()
         try {
+            console.log("Selected User:", selectedUser?._id)
+            console.log("Auth User:", authUser?._id)
             const res = await axios.post(`http://localhost:8080/api/v1/message/send/${selectedUser?._id}`, {message}, {
                 headers: {
                     "Content-Type": "application/json"
@@ -22,11 +24,11 @@ const SendInput = () => {
             })
             console.log(res)
             dispatch(setMessages([...messages, res?.data?.newMessage]))
-            setMessage("")
+            
         } catch (error) {
             console.log(error)
         }
-
+        setMessage("")
         
     }
     return (

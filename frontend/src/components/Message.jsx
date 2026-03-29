@@ -7,10 +7,10 @@ const Message = ({ message }) => {
   const { selectedUser } = useSelector(store => store.user)
   const { messages } = useSelector(store => store.message)
   useEffect(() => {
-    scroll.current?.scrollIntoView({ behaviour: "smooth" })
+    scroll.current?.scrollIntoView({ behavior: "smooth" })
   }, [message])
   return (
-    <div ref={scroll} className={`chat ${authUser?._id === message?.senderId ? "chat-end" : "chat-start"}`}>
+    <div ref={scroll} className={`chat ${message?.senderId?.toString() === authUser?._id?.toString() ? "chat-end" : "chat-start"}`}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <img
@@ -22,7 +22,8 @@ const Message = ({ message }) => {
       <div className="chat-header">
         <time className="text-xs opacity-50">{message.createdAt}</time>
       </div>
-      <div className="chat-bubble">{message?.message}</div>
+      <div className={`chat-bubble ${message?.senderId !== authUser?._id ? 'bg-gray-200 text-black' : ''} `}>{message?.message}</div>
+
     </div>
 
   )
