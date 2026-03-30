@@ -32,7 +32,7 @@ export const sendMessage = async (req, res)=>{
         // SOCKET IO
         const receiverSocketId = getReceiverSocketId(receiverId)
         if(receiverSocketId){
-            console.log("emitting message", newMessage)
+            //console.log("emitting message", newMessage)
             io.to(receiverSocketId).emit("newMessage", newMessage)
         }
 

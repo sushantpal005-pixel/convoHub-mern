@@ -14,15 +14,15 @@ const SendInput = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault()
         try {
-            console.log("Selected User:", selectedUser?._id)
-            console.log("Auth User:", authUser?._id)
+            //console.log("Selected User:", selectedUser?._id)
+            //console.log("Auth User:", authUser?._id)
             const res = await axios.post(`http://localhost:8080/api/v1/message/send/${selectedUser?._id}`, {message}, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 withCredentials: true
             })
-            console.log(res)
+            //console.log(res)
             dispatch(setMessages([...messages, res?.data?.newMessage]))
             
         } catch (error) {

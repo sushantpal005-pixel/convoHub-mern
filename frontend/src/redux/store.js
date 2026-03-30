@@ -88,7 +88,7 @@ const store = configureStore({
       },
     }),
 });
-console.log("storage object:", storage);
-console.log("storage.getItem:", storage?.getItem);
+//console.log("storage object:", storage);
+//console.log("storage.getItem:", storage?.getItem);
 export const persistor = persistStore(store); 
 export default store;

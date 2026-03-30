@@ -21,7 +21,10 @@ const Message = ({ message }) => {
       </div>
       <div className="chat-header">
         <time className="text-xs opacity-50">
-          {new Date(message.createdAt).toLocaleTimeString([], {
+          {new Date(message.createdAt).toLocaleString([], {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
           })}

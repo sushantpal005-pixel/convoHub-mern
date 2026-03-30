@@ -3,13 +3,17 @@ import SendInput from './SendInput'
 import Messages from './Messages'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedUser } from '../redux/userSlice'
+import { FaArrowLeft } from "react-icons/fa";
 
 
 const MessageContainer = () => {
     const { selectedUser } = useSelector(store => store.user)
     const { authUser, onlineUsers } = useSelector(store => store.user)
     const dispatch = useDispatch()
-    const isOnline = onlineUsers.includes(selectedUser._id)
+    const isOnline = onlineUsers.includes(selectedUser?._id)
+    const leftArrow = ()=>{
+        dispatch(setSelectedUser(null))
+    }
     // useEffect(() => {
     //     return () => dispatch(setSelectedUser(null))
     // }, [])
@@ -17,9 +21,10 @@ const MessageContainer = () => {
         <>
             {
                 selectedUser !== null ? (
-                    <div className='md:min-w-[550px] flex flex-col'>
+                    <div className='md:min-w-[550px] flex flex-col '>
 
                         <div className='flex gap-2 items-center bg-white/20 border border-white/30 text-white/90 px-4 py-2 mb-2 '>
+                                <FaArrowLeft onClick={leftArrow} className='cursor-pointer' />
                             <div className='avatar'>
                                 <div className='w-12 rounded-full '>
                                     <img className='relative' src={selectedUser?.profilePhoto} alt="userprofile" />

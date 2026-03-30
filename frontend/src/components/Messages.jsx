@@ -8,7 +8,7 @@ const Messages = () => {
   useGetMessages()
   useGetRealTimeMessage()
   const { messages } = useSelector(store => store.message)
-  console.log("message hai bhai", messages)
+  //console.log("message hai bhai", messages)
   //if (!messages) return;
   return (
     <div className='px-4 flex-1 overflow-auto'>
