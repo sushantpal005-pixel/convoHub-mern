@@ -20,7 +20,7 @@ const Signup = () => {
         e.preventDefault()
         try {
             //console.log(user)
-            const res = await axios.post(`http://localhost:8080/api/v1/user/register`, user, {
+            const res = await axios.post(`https://convohub-ju3o.onrender.com/api/v1/user/register`, user, {
                 headers: {
                     "Content-Type": "application/json"
                 },

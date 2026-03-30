@@ -20,7 +20,7 @@ const _dirname = path.resolve()
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({origin:'http://localhost:5173', credentials:true}))
+app.use(cors({origin:'https://convohub-ju3o.onrender.com', credentials:true}))
 
 // routes
 app.use("/api/v1/user", userRoute)
