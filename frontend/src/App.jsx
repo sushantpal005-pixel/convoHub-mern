@@ -30,10 +30,11 @@ function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
     if(authUser){
-      const socket = io("http://localhost:8080", {
+      const socket = io("/", {
         query: {
           userId:authUser._id
-        }
+        },
+        transports: ["websocket", "polling"]
 
       })
       dispatch(setSocket(socket))
