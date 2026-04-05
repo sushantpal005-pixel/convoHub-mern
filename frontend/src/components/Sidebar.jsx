@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
-import { setAuthUser, setOtherUsers, setSearchedUser, setSelectedUser, resetUserState, setOnlineUsers } from '../redux/userSlice';
+import { setAuthUser, setOtherUsers, setSearchedUser, setSelectedUser, setOnlineUsers } from '../redux/userSlice';
 
 const Sidebar = () => {
   const [search, setSearch] = useState("")
