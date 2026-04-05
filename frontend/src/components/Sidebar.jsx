@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
-import { setAuthUser, setOtherUsers, setSearchedUser } from '../redux/userSlice';
+import { setAuthUser, setOtherUsers, setSearchedUser, setSelectedUser, resetUserState, setOnlineUsers } from '../redux/userSlice';
 
 const Sidebar = () => {
   const [search, setSearch] = useState("")
@@ -21,9 +21,13 @@ const Sidebar = () => {
 
     try {
       const res = await axios.get('https://convohub-ju3o.onrender.com/api/v1/user/logout')
+      dispatch(setAuthUser(null))
+      dispatch(setOtherUsers([]))
+      dispatch(setOnlineUsers([]))
+      dispatch(setSelectedUser(null))
       navigate("/login")
       toast.success(res.data.message)
-      dispatch(setAuthUser(null))
+
     } catch (error) {
       console.log(error)
     }
