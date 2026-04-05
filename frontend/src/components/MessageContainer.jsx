@@ -21,7 +21,7 @@ const MessageContainer = () => {
         <>
             {
                 selectedUser !== null ? (
-                    <div className='md:min-w-[550px] flex flex-col '>
+                    <div className='md:min-w-[550px] md:max-w-[550px] flex flex-col '>
 
                         <div className='flex gap-2 items-center bg-white/20 border border-white/30 text-white/90 px-4 py-2 mb-2 '>
                                 <FaArrowLeft onClick={leftArrow} className='cursor-pointer' />
