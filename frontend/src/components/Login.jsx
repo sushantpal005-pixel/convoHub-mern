@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
-import { setAuthUser } from '../redux/userSlice'
+import { setAuthUser, setOnlineUsers, setOtherUsers, setSelectedUser } from '../redux/userSlice'
+import { useEffect } from 'react'
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -12,6 +13,12 @@ const Login = () => {
   })
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  useEffect(()=>{
+    dispatch(setAuthUser(null))
+    dispatch(setSelectedUser(null))
+    dispatch(setOnlineUsers([]))
+    dispatch(setOtherUsers([]))
+  })
   const onSubmitHandler = async (e) => {
     e.preventDefault()
     try {
