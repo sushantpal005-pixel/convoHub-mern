@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import toast from "react-hot-toast"
 import { setAuthUser, setOnlineUsers, setOtherUsers, setSelectedUser } from '../redux/userSlice'
+import { useDispatch } from 'react-redux'
 
 
 const Signup = () => {
@@ -13,6 +14,7 @@ const Signup = () => {
         confirmPassword: "",
         gender: ""
     })
+    const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(setAuthUser(null))
         dispatch(setSelectedUser(null))
