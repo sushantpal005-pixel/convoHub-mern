@@ -18,7 +18,7 @@ const Login = () => {
     dispatch(setSelectedUser(null))
     dispatch(setOnlineUsers([]))
     dispatch(setOtherUsers([]))
-  })
+  }, [])
   const onSubmitHandler = async (e) => {
     e.preventDefault()
     try {
