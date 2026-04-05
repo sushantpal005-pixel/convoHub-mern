@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import toast from "react-hot-toast"
+import { setAuthUser, setOnlineUsers, setOtherUsers, setSelectedUser } from '../redux/userSlice'
 
 
 const Signup = () => {
@@ -12,6 +13,12 @@ const Signup = () => {
         confirmPassword: "",
         gender: ""
     })
+    useEffect(()=>{
+        dispatch(setAuthUser(null))
+        dispatch(setSelectedUser(null))
+        dispatch(setOnlineUsers([]))
+        dispatch(setOtherUsers([]))
+      }, [])
     const navigate = useNavigate()
     const handleCheckbox = (gender) => {
         setUser({ ...user, gender })
